@@ -1,0 +1,36 @@
+<div class="login-page-container">
+
+
+<div class="login-panel">
+  <mat-form-field class="email-field" appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput
+        placeholder="example.email@example.com"
+        [formControl]="email" required />
+    <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="password-field" appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input
+        matInput [type]="hide_password ? 'password' : 'text'">
+    <button mat-icon-button matSuffix
+        style="padding-top: 14px"
+        (click)="hide_password = !hide_password"
+        [attr.aria-label]="'hide_password password'"
+        [attr.aria-pressed]="hide_password">
+      <mat-icon>{{
+        hide_password ? 'visibility_off' : 'visibility'
+      }}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="login-button-row">
+    <button mat-raised-button color="primary">Register</button>
+    <button mat-raised-button color="primary"
+        (click)="loginClick()">Login</button>
+  </div>
+</div>
+
+
+</div>

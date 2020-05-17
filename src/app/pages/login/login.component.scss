@@ -1,0 +1,39 @@
+
+
+.login-page-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-panel {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 600px;
+  padding-top: 15px;
+  align-items: center;
+  justify-content: flex-start;
+
+  background: #eee;
+
+  .email-field {
+    width: 95%;
+    padding: 0;
+  }
+
+  .password-field {
+    margin-top: 30px;
+    width: 95%;
+    padding: 0;
+  }
+
+  .login-button-row {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+

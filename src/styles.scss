@@ -9,7 +9,11 @@ html, body {
   box-sizing: border-box;
 }
 
-
+/*
+https://medium.com/@tomastrajan/
+how-to-build-responsive-layouts-with-bootstrap-4-
+and-angular-6-cfbb108d797b
+*/
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -20,3 +24,5 @@ $grid-breakpoints: (
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+

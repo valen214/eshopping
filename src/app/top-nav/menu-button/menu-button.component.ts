@@ -12,4 +12,7 @@ export class MenuButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClick(): void {
+
+  }
 }

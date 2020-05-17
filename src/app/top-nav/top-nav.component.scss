@@ -18,8 +18,14 @@
     background: #faf;
   }
 
-  span {
+  .top-nav-label {
     user-select: none;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+
+  .app-login-button {
+    margin-left: auto;
   }
 }
 
