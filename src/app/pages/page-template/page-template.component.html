@@ -1,0 +1,22 @@
+
+<div class="page-container">
+  <app-top-nav
+    [(openSideNav)]="openSideNav"
+    (height)="topNavHeight = $event">
+  </app-top-nav>
+
+  <div class="side-nav-click-away"
+      [style.display]="(openSideNav || !mobile) ? 'block' : 'none'"
+      (click)="mobile && (openSideNav = false)">
+  </div>
+  <side-nav #sideNav class="side-nav"
+      [style.transform]="(openSideNav || !mobile) ? 'translateX(0)' : 'translateX(-100%)'"
+      [style.paddingTop]="topNavHeight">
+  </side-nav>
+  <div class="page-content-container">
+
+    <ng-content select=".page-content"></ng-content>
+
+  </div>
+</div>
+

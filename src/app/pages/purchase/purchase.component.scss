@@ -1,0 +1,32 @@
+
+.product-purchase-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  margin-bottom: 30px;
+}
+
+
+.quantity-selector {
+  width: 35%;
+
+}
+
+.quantity-selector-panel {
+  width: 100px;
+  background: rgba(255, 255, 255, 0.7);
+
+  &.mat-select-panel {
+    /*
+    min-width: unset !important;
+    */
+  }
+}

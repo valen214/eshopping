@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="app-top-nav">
+  <button class="app-menu-button"
+      mat-icon-button aria-label="menu button"
+      (click)="this.toggleSideNav()"
+      [style.zIndex]="2">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span
+      routerLink="/home"
+      class="top-nav-label"
+      [style.zIndex]="2">
+    E-Shopping
+  </span>
+  <app-login-button
+      class="app-login-button"
+      (click)="this.toggleUserMenu()">
+  </app-login-button>
+</mat-toolbar>
+

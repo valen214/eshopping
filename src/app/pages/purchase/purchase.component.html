@@ -1,0 +1,30 @@
+<page-template>
+
+
+  <div *ngIf="product" class="page-content product-purchase-container">
+
+    <h1>{{ product.name }}</h1>
+    <img *ngIf="product.thumbnail || product.images"
+        [src]="product.thumbnail || product.images[0]"
+        class="product-image" />
+    <mat-form-field
+        class="quantity-selector">
+      <mat-label>Quantity</mat-label>
+      <mat-select
+          [(ngModel)]="selectedQuantity"
+          panelClass="quantity-selector-panel">
+        <mat-option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{ i }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+        class="purchase-button"
+        mat-raised-button color="primary"
+        (click)="buy()">
+      Buy {{ selectedQuantity }}
+    </button>
+  </div>
+
+
+
+</page-template>

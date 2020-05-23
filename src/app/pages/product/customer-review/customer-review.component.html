@@ -1,0 +1,8 @@
+<div>
+  <h2>Customer Review</h2>
+  <div *ngIf="product.reviews; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+
+  </ng-template>
+  <ng-template #elseBlock>This product does not have review so far.</ng-template>
+</div>

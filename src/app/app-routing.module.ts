@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ProductComponent } from './pages/product/product.component';
+import { PurchaseComponent } from './pages/purchase/purchase.component';
+import { PurchaseSuccessComponent } from './pages/purchase-success/purchase-success.component';
 
 
 const routes: Routes = [{
@@ -13,6 +16,15 @@ const routes: Routes = [{
     path: 'login',
     pathMatch: 'full',
     component: LoginComponent,
+  }, {
+    path: "product/:productId",
+    component: ProductComponent,
+  }, {
+    path: "product/:productId/purchase",
+    component: PurchaseComponent,
+  },  {
+    path: "product/:productId/purchase-success",
+    component: PurchaseSuccessComponent,
   }, {
     path: '',
     pathMatch: 'full',

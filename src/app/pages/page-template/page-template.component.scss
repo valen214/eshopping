@@ -1,0 +1,49 @@
+
+@import "../../../styles";
+
+.page-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden auto;
+
+  .side-nav-click-away {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+
+  }
+  .side-nav {
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    background: #99e;
+
+    // display: none;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-out;
+
+    @media (min-width: map-get($grid-breakpoints, sm)) {
+      width: 30%;
+
+      transform: none;
+      transition: none;
+    }
+  }
+
+
+  .page-content-container {
+    width: 100%;
+
+    @media (min-width: map-get($grid-breakpoints, sm)) {
+      position: fixed;
+      width: 70%;
+      right: 0;
+    }
+  }
+}

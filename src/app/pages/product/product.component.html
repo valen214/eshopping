@@ -1,0 +1,24 @@
+<page-template>
+
+
+<div class="page-content" *ngIf="this.product">
+  <app-slideshow
+      style="width: 100%; height: 300px"
+      [images]="product.images || [ product.thumbnail ]">
+  </app-slideshow>
+  <div class="product-info">
+    <h2 class="product-name">{{ product.name }}</h2>
+    <div class="product-price">{{ currency }}{{ product.price }}</div>
+    <button
+        class="purchase-button"
+        mat-raised-button color="primary"
+        [routerLink]="['purchase']">
+      Order Now!
+    </button>
+    <div class="product-description">{{ product.description }}</div>
+    <customer-review [product]="product"></customer-review>
+  </div>
+</div>
+
+
+</page-template>

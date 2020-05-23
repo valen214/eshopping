@@ -1,0 +1,14 @@
+<page-template>
+
+
+  <div class="page-content main-product-container">
+    <ng-container *ngFor="let product of product_list">
+      <a [routerLink]="['/product', product.id]">
+        <app-product-card
+            [product]="product">
+        </app-product-card>
+      </a>
+    </ng-container>
+  </div>
+
+</page-template>
