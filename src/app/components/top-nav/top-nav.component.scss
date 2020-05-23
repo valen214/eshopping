@@ -18,13 +18,19 @@
     background: #faf;
   }
 
+  .app-menu-button {
+    z-index: 501;
+  }
+
   .top-nav-label {
+    z-index: 501;
     user-select: none;
     padding-left: 10px;
     cursor: pointer;
   }
 
   .app-login-button {
+    z-index: 501;
     margin-left: auto;
   }
 }

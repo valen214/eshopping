@@ -1,10 +1,11 @@
-import { Component, OnInit, ElementRef, Input, ContentChildren, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, ContentChildren, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.service';
 
 @Component({
   selector: 'app-top-nav',
   templateUrl: './top-nav.component.html',
-  styleUrls: ['./top-nav.component.scss']
+  styleUrls: ['./top-nav.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TopNavComponent implements OnInit {
   @Output() height = new EventEmitter();
@@ -28,6 +29,8 @@ export class TopNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let height = this.elemRef.nativeElement.getBoundingClientRect().height;
+    this.height.emit(height + "px");
   }
 
   toggleUserMenu(){

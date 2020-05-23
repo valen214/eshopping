@@ -12,8 +12,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    display: none;
+    z-index: 500;
 
+    display: none;
   }
   .side-nav {
     width: 350px;
@@ -21,8 +22,11 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 500;
+
     padding: 15px;
     background: #99e;
+
 
     // display: none;
     transform: translateX(-100%);

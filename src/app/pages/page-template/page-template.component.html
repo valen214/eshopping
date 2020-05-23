@@ -2,7 +2,9 @@
 <div class="page-container">
   <app-top-nav
     [(openSideNav)]="openSideNav"
-    (height)="topNavHeight = $event">
+    (height)="topNavHeight = $event"
+    [style.zIndex]="500"
+    #topNav>
   </app-top-nav>
 
   <div class="side-nav-click-away"
@@ -12,6 +14,9 @@
   <side-nav #sideNav class="side-nav"
       [style.transform]="(openSideNav || !mobile) ? 'translateX(0)' : 'translateX(-100%)'"
       [style.paddingTop]="topNavHeight">
+      <!--
+        "topNav.elemRef.nativeElement.getBoundingClientRect().height + 'px'">
+      -->
   </side-nav>
   <div class="page-content-container">
 
