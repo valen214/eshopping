@@ -52,8 +52,10 @@
     right: 0;
     top: 0;
     background: palegreen;
+    z-index: 500;
+    overflow: hidden;
 
-    border-bottom-left-radius: 50%;
+    border-bottom-left-radius: 100%;
     transform: scale(0);
     transform-origin: top right;
     transition: border-bottom-left-radius 0.5s, transform 0.5s;
@@ -65,6 +67,7 @@
     }
 
     @media (min-width: map-get($grid-breakpoints, sm)) {
+      width: 70%;
     }
   }
 

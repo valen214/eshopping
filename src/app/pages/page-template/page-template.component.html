@@ -10,7 +10,7 @@
   </top-nav>
 
   <div class="side-nav-click-away"
-      [style.display]="(openSideNav || !mobile) ? 'block' : 'none'"
+      [style.display]="(openSideNav && mobile) ? 'block' : 'none'"
       (click)="mobile && (openSideNav = false)">
   </div>
   <side-nav #sideNav class="side-nav"

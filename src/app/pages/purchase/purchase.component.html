@@ -46,7 +46,14 @@
         [disabled]="quantityFormControl.invalid"
         mat-raised-button color="primary"
         (click)="buy()">
-      Buy {{ quantityFormControl.invalid ? "" : quantity }}
+      {{
+        quantityFormControl.invalid ? (
+          "Invalid Quantity"
+        ) : (
+          "Buy " + quantity + ",  " +
+              currency + " " + (product.price * quantity)
+        )
+      }}
     </button>
   </div>
 
