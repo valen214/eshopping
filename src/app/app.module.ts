@@ -25,7 +25,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginButtonComponent } from './components/top-nav/login-button/login-button.component';
 import { LoginComponent } from './pages/login/login.component';
-import { UserPanelComponent } from './components/top-nav/user-panel/user-panel.component';
+import { UserPanelComponent } from './components/user-panel/user-panel.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductComponent } from './pages/product/product.component';
 import { CmsHomeComponent } from './pages/cms-home/cms-home.component';

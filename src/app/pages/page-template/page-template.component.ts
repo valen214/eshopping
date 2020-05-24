@@ -15,10 +15,11 @@ import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.s
   templateUrl: './page-template.component.html',
   styleUrls: ['./page-template.component.scss'],
 })
-export class PageTemplateComponent implements AfterViewInit  {
+export class PageTemplateComponent implements OnInit  {
 
   mobile: boolean;
   openSideNav: boolean;
+  openUserPanel: boolean;
 
 
   topNavHeight: string | number;
@@ -29,9 +30,6 @@ export class PageTemplateComponent implements AfterViewInit  {
     this.resizeListenerService.subscribe((i) => {
       this.mobile = i == 0;
     });
-  }
-  ngAfterViewInit(): void {
-
   }
 
   ngOnInit(): void {

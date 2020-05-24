@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService, LoginState } from "../../../auth-service.service";
+import { AuthService, LoginState } from "../../../services/auth-service.service";
 
 @Component({
   selector: 'app-login-button',

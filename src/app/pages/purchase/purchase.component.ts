@@ -1,7 +1,16 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Product, ProductsDataService } from 'src/app/services/products-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 
+/** Error when invalid control is dirty, touched, or submitted. */
+export class QuantityErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null,
+        form: FormGroupDirective | NgForm | null): boolean {
+    return !!(control && control.invalid);
+  }
+}
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
@@ -13,9 +22,15 @@ export class PurchaseComponent implements OnInit {
   productId: string;
   product: Product;
 
-  currency: string = "HKD $ ";
+  quantity: number = 1;
+  quantityFormControl = new FormControl(this.quantity, [
+    Validators.required,
+    Validators.min(1),
+    Validators.pattern(/^\d+$/),
+  ]);
+  quantityMatcher = new QuantityErrorStateMatcher();
 
-  selectedQuantity: number = 1;
+  currency: string = "HKD $ ";
 
   constructor(
     private route: ActivatedRoute,
@@ -37,4 +52,6 @@ export class PurchaseComponent implements OnInit {
   buy(): void {
     this.router.navigate(["..", "purchase-success"], { relativeTo: this.route });
   }
+
+  log(...args){ console.log(...args); }
 }

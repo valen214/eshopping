@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, Input, ContentChildren, Output, EventEmi
 import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.service';
 
 @Component({
-  selector: 'app-top-nav',
+  selector: 'top-nav',
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -12,7 +12,8 @@ export class TopNavComponent implements OnInit {
 
   console = window.console;
 
-  openUserMenu: boolean = false;
+  @Input() openUserPanel: boolean = false;
+  @Output() openUserPanelChange = new EventEmitter();
 
   @Input() openSideNav: boolean = false;
   @Output() openSideNavChange = new EventEmitter();
@@ -23,19 +24,22 @@ export class TopNavComponent implements OnInit {
   ){
     this.console = window.console;
     this.resizeListenerService.subscribe(i => {
-      let height = this.elemRef.nativeElement.getBoundingClientRect().height;
-      this.height.emit(height + "px");
+      this.notifyHeight();
     })
   }
 
   ngOnInit(): void {
+    this.notifyHeight();
+  }
+
+  notifyHeight(){
     let height = this.elemRef.nativeElement.getBoundingClientRect().height;
     this.height.emit(height + "px");
   }
 
-  toggleUserMenu(){
-    console.log(this.openUserMenu);
-    this.openUserMenu = !this.openUserMenu;
+  toggleUserPanel(){
+    this.openUserPanel = !this.openUserPanel;
+    this.openUserPanelChange.emit(this.openUserPanel);
   }
   toggleSideNav(){
     this.openSideNav = !this.openSideNav;

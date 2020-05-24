@@ -8,13 +8,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-user-panel',
+  selector: 'user-panel',
   templateUrl: './user-panel.component.html',
   styleUrls: ['./user-panel.component.scss']
 })
 export class UserPanelComponent implements OnInit {
-  @Input() open: boolean;
-  @Output() openChange = new EventEmitter<boolean> ();
 
   constructor(private elemRef: ElementRef) { }
 

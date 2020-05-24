@@ -1,11 +1,13 @@
 
 <div class="page-container">
-  <app-top-nav
+  <top-nav
     [(openSideNav)]="openSideNav"
+
+    [(openUserPanel)]="openUserPanel"
+
     (height)="topNavHeight = $event"
-    [style.zIndex]="500"
-    #topNav>
-  </app-top-nav>
+    class="top-nav" #topNav>
+  </top-nav>
 
   <div class="side-nav-click-away"
       [style.display]="(openSideNav || !mobile) ? 'block' : 'none'"
@@ -18,6 +20,11 @@
         "topNav.elemRef.nativeElement.getBoundingClientRect().height + 'px'">
       -->
   </side-nav>
+
+  <user-panel class="user-panel" [ngClass]="{ open: openUserPanel }"
+      [style.transformOrigin]=""
+      [style.paddingTop]="topNavHeight">
+  </user-panel>
   <div class="page-content-container">
 
     <ng-content select=".page-content"></ng-content>

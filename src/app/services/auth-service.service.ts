@@ -13,7 +13,7 @@ export enum LoginState {
 export class AuthService {
 
   private login_state: LoginState =
-  /* (un)comment this line to toggle
+  //* (un)comment this line to toggle
   LoginState.LOGGED_IN;
   /*/
   LoginState.LOGGED_OUT;

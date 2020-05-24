@@ -1,0 +1,11 @@
+
+.user-panel {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+
+  display: grid;
+  grid: repeat(2, 1fr) / repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}

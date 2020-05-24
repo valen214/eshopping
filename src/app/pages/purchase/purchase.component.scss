@@ -11,13 +11,26 @@
   height: auto;
   max-height: 300px;
   object-fit: contain;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
+.quantity-input {
+  position: relative;
 
-.quantity-selector {
-  width: 35%;
+  .mat-form-field-wrapper {
+    cursor: text;
+  }
 
+  .mat-form-field-label-wrapper {
+    margin-top: -15px;
+  }
+}
+.quantity-select-menu-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 15%;
 }
 
 .quantity-selector-panel {

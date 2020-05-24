@@ -7,21 +7,46 @@
     <img *ngIf="product.thumbnail || product.images"
         [src]="product.thumbnail || product.images[0]"
         class="product-image" />
-    <mat-form-field
-        class="quantity-selector">
-      <mat-label>Quantity</mat-label>
-      <mat-select
-          [(ngModel)]="selectedQuantity"
-          panelClass="quantity-selector-panel">
-        <mat-option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{ i }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+
+    <div class="quantity-input">
+      <mat-form-field>
+        <mat-label
+            style="margin-top: -1em;"
+            >Quantity</mat-label>
+        <input
+            matInput
+
+            [value]="quantity"
+            (input)="quantity = $event.target.value"
+            [formControl]="quantityFormControl"
+            style="height: 2em; line-height: 2em; font-size: 1em; margin-top: -1em;"/>
+        <button mat-button
+            *ngIf="quantity || true"
+            matSuffix mat-icon-button
+            aria-label="Clear"
+            [matMenuTriggerFor]="quantitySelectMenu">
+          <mat-icon>expand_more</mat-icon>
+        </button>
+
+        <mat-error *ngIf="quantityFormControl.invalid">
+          invalid <strong>quantity</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-menu #quantitySelectMenu="matMenu">
+        <button
+            *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]"
+            mat-menu-item
+            (click)="quantity = i">{{ i }}</button>
+      </mat-menu>
+    </div>
 
     <button
         class="purchase-button"
+        [disabled]="quantityFormControl.invalid"
         mat-raised-button color="primary"
         (click)="buy()">
-      Buy {{ selectedQuantity }}
+      Buy {{ quantityFormControl.invalid ? "" : quantity }}
     </button>
   </div>
 

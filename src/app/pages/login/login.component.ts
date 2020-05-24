@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
-import { AuthService, LoginState } from "../../auth-service.service";
+import { AuthService, LoginState } from "../../services/auth-service.service";
 import { Router } from '@angular/router';
 
 @Component({
