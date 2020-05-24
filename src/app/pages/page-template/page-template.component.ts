@@ -22,7 +22,7 @@ export class PageTemplateComponent implements OnInit  {
   openUserPanel: boolean;
 
 
-  topNavHeight: string | number;
+  topNavHeight: number;
 
   constructor(
     private resizeListenerService: ResizeListenerService,

@@ -1,29 +1,36 @@
 
 <div class="page-container">
   <top-nav
-    [(openSideNav)]="openSideNav"
+    [openSideNav]="openSideNav"
+    (openSideNavChange)="openSideNav = $event; (openSideNav && openUserPanel) && (openUserPanel = false)"
 
-    [(openUserPanel)]="openUserPanel"
+    [openUserPanel]="openUserPanel"
+    (openUserPanelChange)="openUserPanel = $event; (openUserPanel && mobile && openSideNav) && (openSideNav = false)"
 
     (height)="topNavHeight = $event"
     class="top-nav" #topNav>
   </top-nav>
 
   <div class="side-nav-click-away"
-      [style.display]="(openSideNav && mobile) ? 'block' : 'none'"
+      [ngClass]="{ open: openSideNav && mobile }"
       (click)="mobile && (openSideNav = false)">
   </div>
   <side-nav #sideNav class="side-nav"
       [style.transform]="(openSideNav || !mobile) ? 'translateX(0)' : 'translateX(-100%)'"
-      [style.paddingTop]="topNavHeight">
+      [style.paddingTop]="topNavHeight + 'px'">
       <!--
         "topNav.elemRef.nativeElement.getBoundingClientRect().height + 'px'">
       -->
   </side-nav>
 
-  <user-panel class="user-panel" [ngClass]="{ open: openUserPanel }"
-      [style.transformOrigin]=""
-      [style.paddingTop]="topNavHeight">
+  <div class="user-panel-click-away"
+      [ngClass]="{ open: openUserPanel }"
+      (click)="(openUserPanel = false)">
+  </div>
+  <user-panel class="user-panel"
+      [ngClass]="{ open: openUserPanel }"
+      [style.transformOrigin]="'calc(100% - 16px - 20px) ' + (topNavHeight / 2).toString() + 'px'"
+      [style.paddingTop]="topNavHeight + 'px'">
   </user-panel>
   <div class="page-content-container">
 

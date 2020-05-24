@@ -10,15 +10,25 @@
     z-index: 500;
   }
 
-  .side-nav-click-away {
+  .side-nav-click-away,
+  .user-panel-click-away {
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 500;
+    display: block;
 
-    display: none;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: all 0.1s ease-in-out;
+
+    &.open {
+      pointer-events: all;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: all 0.25s ease-in-out;
+    }
   }
   .side-nav {
     width: 350px;
@@ -55,15 +65,16 @@
     z-index: 500;
     overflow: hidden;
 
-    border-bottom-left-radius: 100%;
+    border-bottom-left-radius: 150%;
     transform: scale(0);
-    transform-origin: top right;
-    transition: border-bottom-left-radius 0.5s, transform 0.5s;
+    // transform-origin: top calc(100% - 20px - 16px); // inline
+    transition: border-radius 0.1s, transform 0.1s;
 
 
     &.open {
       transform: scale(100%);
-      border-bottom-left-radius: 0;
+      border-radius: 0;
+      transition: border-radius 0.25s, transform 0.25s;
     }
 
     @media (min-width: map-get($grid-breakpoints, sm)) {

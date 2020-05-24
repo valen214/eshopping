@@ -8,7 +8,7 @@ import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.s
   encapsulation: ViewEncapsulation.None,
 })
 export class TopNavComponent implements OnInit {
-  @Output() height = new EventEmitter();
+  @Output() height = new EventEmitter<number> ();
 
   console = window.console;
 
@@ -34,7 +34,7 @@ export class TopNavComponent implements OnInit {
 
   notifyHeight(){
     let height = this.elemRef.nativeElement.getBoundingClientRect().height;
-    this.height.emit(height + "px");
+    this.height.emit(height);
   }
 
   toggleUserPanel(){
