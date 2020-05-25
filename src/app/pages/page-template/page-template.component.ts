@@ -41,7 +41,9 @@ export class PageTemplateComponent implements OnInit  {
   ){
     this.resizeListenerService.subscribe((i) => {
       if(i == 0){
-        if(!this.mobile){
+        if(this.mobile){
+          this.sideNav.classList.add("mobile");
+        } else{
           if(this.sideNav){
             this.sideNav.classList.remove("mobile");
             setTimeout(() => {
