@@ -6,9 +6,11 @@ import {
   ViewContainerRef,
   ViewChildren,
   ElementRef,
-  ViewChild
+  ViewChild,
+  Directive
 } from '@angular/core';
 import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.service';
+import { SideNavComponent } from 'src/app/components/side-nav/side-nav.component';
 
 @Component({
   selector: 'page-template',
@@ -16,6 +18,15 @@ import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.s
   styleUrls: ['./page-template.component.scss'],
 })
 export class PageTemplateComponent implements OnInit  {
+  private sideNav: HTMLElement;
+
+  private _sideNav: SideNavComponent;
+  @ViewChild("sideNav") set s(elem: SideNavComponent){
+    setTimeout(() => {
+      this._sideNav = elem;
+      console.log(elem);
+    }, 0);
+  }
 
   mobile: boolean;
   openSideNav: boolean;
@@ -26,13 +37,28 @@ export class PageTemplateComponent implements OnInit  {
 
   constructor(
     private resizeListenerService: ResizeListenerService,
+    private elemRef: ElementRef,
   ){
     this.resizeListenerService.subscribe((i) => {
+      if(i == 0){
+        if(!this.mobile){
+          if(this.sideNav){
+            this.sideNav.classList.remove("mobile");
+            setTimeout(() => {
+              this.sideNav.classList.add("mobile");
+            }, 15);
+          }
+        }
+        this.openSideNav = false;
+      } else{
+        this.sideNav.classList.remove("mobile");
+      }
       this.mobile = i == 0;
     });
   }
 
   ngOnInit(): void {
+    this.sideNav = this.elemRef.nativeElement.querySelector(".side-nav");
   }
 
   log(...args){

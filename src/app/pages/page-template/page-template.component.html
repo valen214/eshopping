@@ -16,7 +16,7 @@
       (click)="mobile && (openSideNav = false)">
   </div>
   <side-nav #sideNav class="side-nav"
-      [style.transform]="(openSideNav || !mobile) ? 'translateX(0)' : 'translateX(-100%)'"
+      [ngClass]="{ open: openSideNav || !mobile }"
       [style.paddingTop]="topNavHeight + 'px'">
       <!--
         "topNav.elemRef.nativeElement.getBoundingClientRect().height + 'px'">

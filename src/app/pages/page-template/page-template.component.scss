@@ -40,14 +40,25 @@
 
     padding: 15px;
     background: #99e;
+    box-shadow: 3px 0 10px -2px rgba(0, 0, 0, 0.5);
 
-
-    // display: none;
     transform: translateX(-100%);
-    transition: transform 0.5s ease-out;
+    display: none;
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    &.mobile {
+      transition: transform 0.5s ease-out;
+      display: block;
+    }
 
     @media (min-width: map-get($grid-breakpoints, sm)) {
+      display: block;
       width: 30%;
+
+      box-shadow: none;
 
       transform: none;
       transition: none;
