@@ -28,7 +28,7 @@ export class PageTemplateComponent implements OnInit  {
     }, 0);
   }
 
-  mobile: boolean;
+  mobile: boolean = true;
   openSideNav: boolean;
   openUserPanel: boolean;
 
@@ -41,9 +41,7 @@ export class PageTemplateComponent implements OnInit  {
   ){
     this.resizeListenerService.subscribe((i) => {
       if(i == 0){
-        if(this.mobile){
-          this.sideNav.classList.add("mobile");
-        } else{
+        if(!this.mobile){
           if(this.sideNav){
             this.sideNav.classList.remove("mobile");
             setTimeout(() => {
@@ -61,6 +59,9 @@ export class PageTemplateComponent implements OnInit  {
 
   ngOnInit(): void {
     this.sideNav = this.elemRef.nativeElement.querySelector(".side-nav");
+    if(this.mobile){
+      this.sideNav.classList.add("mobile");
+    }
   }
 
   log(...args){
