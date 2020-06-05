@@ -1,11 +1,9 @@
 
 <div class="page-container">
   <top-nav
-    [openSideNav]="openSideNav"
-    (openSideNavChange)="openSideNav = $event; (openSideNav && openUserPanel) && (openUserPanel = false)"
-
-    [openUserPanel]="openUserPanel"
-    (openUserPanelChange)="openUserPanel = $event; (openUserPanel && mobile && openSideNav) && (openSideNav = false)"
+    [(openSideNav)]="openSideNav"
+    [(openShoppingCart)]="openShoppingCart"
+    [(openUserPanel)]="openUserPanel"
 
     (height)="topNavHeight = $event"
     class="top-nav" #topNav>
@@ -23,19 +21,28 @@
       -->
   </side-nav>
 
+  
+  <div class="shopping-cart-click-away"
+      [ngClass]="{ open: openShoppingCart }"
+      (click)="(openShoppingCart = false)">
+  </div>
+  <shopping-cart class="shopping-cart"
+      [ngClass]="{ open: openShoppingCart }"
+      [style.transformOrigin]="shoppingCartTransformOrigin"
+      [style.paddingTop]="topNavHeight + 'px'">
+  </shopping-cart>
+
   <div class="user-panel-click-away"
       [ngClass]="{ open: openUserPanel }"
       (click)="(openUserPanel = false)">
   </div>
   <user-panel class="user-panel"
       [ngClass]="{ open: openUserPanel }"
-      [style.transformOrigin]="'calc(100% - 16px - 20px) ' + (topNavHeight / 2).toString() + 'px'"
+      [style.transformOrigin]="userPanelTransformOrigin"
       [style.paddingTop]="topNavHeight + 'px'">
   </user-panel>
   <div class="page-content-container">
-
     <ng-content select=".page-content"></ng-content>
-
   </div>
 </div>
 

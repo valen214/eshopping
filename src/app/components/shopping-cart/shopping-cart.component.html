@@ -1,0 +1,10 @@
+
+<ng-container *ngFor="let product_info of
+    this.productCartService.product_cart">
+
+  <div *ngIf="product_info.product as p"
+      class="product-tile">
+    <img [src]="p.thumbnail" />
+    <h2 style="margin:0">X</h2> {{ p.quantity }}
+  </div>
+</ng-container>

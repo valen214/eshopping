@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsDataService, Product } from '../../services/products-data.service';
+import { ProductsDataService } from '../../services/products-data.service';
 import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.service';
+import { Product } from 'src/app/services/Product';
 
 @Component({
   selector: 'app-home',

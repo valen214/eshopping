@@ -17,6 +17,9 @@ const routes: Routes = [{
     pathMatch: 'full',
     component: LoginComponent,
   }, {
+    path: 'category/:category',
+    redirectTo: '',
+  }, {
     path: "product/:productId",
     component: ProductComponent,
   }, {

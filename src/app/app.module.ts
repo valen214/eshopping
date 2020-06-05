@@ -17,7 +17,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopNavComponent } from './components/top-nav/top-nav.component';
-import { MenuButtonComponent } from './components/top-nav/menu-button/menu-button.component';
 import { IfDirective } from './if.directive';
 import { UseDirective } from './use.directive';
 import { HomeComponent } from './pages/home/home.component';
@@ -40,6 +39,8 @@ import { PurchaseSuccessComponent } from './pages/purchase-success/purchase-succ
 import { ClickAwayComponent } from './components/click-away/click-away.component';
 import { ResizeListenerModule } from './resize-listener/resize-listener.module';
 import { PageTemplateComponent } from './pages/page-template/page-template.component';
+import { CartComponent } from './components/user-panel/cart/cart.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,6 @@ import { PageTemplateComponent } from './pages/page-template/page-template.compo
     UseDirective,
     HomeComponent,
     PageNotFoundComponent,
-    MenuButtonComponent,
     LoginButtonComponent,
     LoginComponent,
     UserPanelComponent,
@@ -62,7 +62,9 @@ import { PageTemplateComponent } from './pages/page-template/page-template.compo
     PurchaseComponent,
     PurchaseSuccessComponent,
     ClickAwayComponent,
-    PageTemplateComponent
+    PageTemplateComponent,
+    CartComponent,
+    ShoppingCartComponent
   ],
   imports: [
     AppRoutingModule,

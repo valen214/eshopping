@@ -11,7 +11,8 @@
   }
 
   .side-nav-click-away,
-  .user-panel-click-away {
+  .user-panel-click-away,
+  .shopping-cart-click-away {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -22,12 +23,12 @@
 
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.0);
-    transition: all 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
 
     &.open {
       pointer-events: all;
       background-color: rgba(0, 0, 0, 0.5);
-      transition: all 0.25s ease-in-out;
+      transition: background-color 0.25s ease-in-out;
     }
   }
   .side-nav {
@@ -65,16 +66,24 @@
     }
   }
 
+  .shopping-cart,
   .user-panel {
-    width: 100vw;
-    height: 300px;
     display: block;
     position: absolute;
     right: 0;
     top: 0;
+    width: 100vw;
+    height: 300px;
     background: palegreen;
     z-index: 500;
-    overflow: hidden;
+
+    &.shopping-cart {
+      overflow: hidden auto;
+      height: 50vh;
+    }
+    &.user-panel {
+      overflow: hidden;
+    }
 
     border-bottom-left-radius: 150%;
     transform: scale(0);
@@ -86,6 +95,7 @@
       transform: scale(100%);
       border-radius: 0;
       transition: border-radius 0.25s, transform 0.25s;
+      box-shadow: 0 3px 10px -2px rgba(0, 0, 0, 0.5);
     }
 
     @media (min-width: map-get($grid-breakpoints, sm)) {

@@ -1,43 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Product } from './Product';
 
 
-export class Review
-{
-  constructor(
-    public name: String,
-    public rating: number,
-    public review: String,
-  ){}
-}
 
-const PRODUCT_CACHE = {
 
-}
-
-function randomstring(length){
-  return crypto.getRandomValues(new Uint8Array(length)).reduce((l, r) => (
-  l + "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[
-      Math.trunc(r * 62 / 256) // String.prototype.charAt() works too
-  ]), "");
-};
-
-export class Product
-{
-  constructor(
-    public id: string,
-    public name: string,
-    public price: number,
-    public description?: string,
-    public thumbnail?: ImageBitmap | string,
-    public images?: ImageBitmap[] | string[],
-    public reviews?: Review[],
-  ){
-    if(!this.id){
-      this.id = randomstring(6);
-    }
-    PRODUCT_CACHE[this.id] = this;
-  }
-}
 
 /*
 https://pixabay.com/photos/strawberries-red-fruit-sweet-ripe-5140640/
@@ -69,12 +35,12 @@ const PRODUCTS_DATA = [
 })
 export class ProductsDataService {
   getProductById(productId: string): Product {
-    return PRODUCT_CACHE[productId];
+    return Product.CACHED_PRODUCT[productId];
   }
 
   constructor(){}
 
   getProductList(): Product[] {
-    return Object.values(PRODUCT_CACHE);
+    return Object.values(Product.CACHED_PRODUCT);
   }
 }

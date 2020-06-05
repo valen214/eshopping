@@ -1,5 +1,5 @@
 <button class="app-login-button"
     mat-icon-button aria-label="login button"
     (click)="onClick()">
-  <mat-icon>{{ this.icon }}</mat-icon>
+  <mat-icon [style.color]="color">{{ this.icon }}</mat-icon>
 </button>

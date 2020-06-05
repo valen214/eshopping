@@ -1,0 +1,9 @@
+<div>
+
+  <ng-container *ngFor="let product_info of
+      this.productCartService.product_cart">
+    <div>
+      {{ product_info.product }} x {{ product_info.quantity }}
+    </div>
+  </ng-container>
+</div>

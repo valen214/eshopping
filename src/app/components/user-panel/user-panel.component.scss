@@ -4,6 +4,14 @@
   width: 100%;
   padding: 20px;
 
+}
+
+.button-group {
+  width: 100%;
+  height: auto;
+}
+
+.grid-3-2 {
   display: grid;
   grid: repeat(2, 1fr) / repeat(3, 1fr);
   grid-column-gap: 20px;

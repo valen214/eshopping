@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,
+  Input
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService, LoginState } from "../../../services/auth-service.service";
@@ -10,6 +12,7 @@ import { AuthService, LoginState } from "../../../services/auth-service.service"
 })
 export class LoginButtonComponent implements OnInit {
 
+  @Input() color: string;
 
   constructor(
     private authService: AuthService,

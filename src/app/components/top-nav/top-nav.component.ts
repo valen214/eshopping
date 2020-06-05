@@ -1,5 +1,18 @@
-import { Component, OnInit, ElementRef, Input, ContentChildren, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
-import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.service';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  Input,
+  ContentChildren,
+  Output,
+  EventEmitter,
+  ViewEncapsulation
+} from '@angular/core';
+import {
+  ResizeListenerService
+} from 'src/app/resize-listener/resize-listener.service';
+
+
 
 @Component({
   selector: 'top-nav',
@@ -12,11 +25,14 @@ export class TopNavComponent implements OnInit {
 
   console = window.console;
 
-  @Input() openUserPanel: boolean = false;
-  @Output() openUserPanelChange = new EventEmitter();
-
   @Input() openSideNav: boolean = false;
   @Output() openSideNavChange = new EventEmitter();
+
+  @Input() openShoppingCart: boolean = false;
+  @Output() openShoppingCartChange = new EventEmitter();
+
+  @Input() openUserPanel: boolean = false;
+  @Output() openUserPanelChange = new EventEmitter();
 
   constructor(
     private elemRef: ElementRef,
@@ -33,16 +49,21 @@ export class TopNavComponent implements OnInit {
   }
 
   notifyHeight(){
-    let height = this.elemRef.nativeElement.getBoundingClientRect().height;
+    let elem = this.elemRef.nativeElement;
+    let height = elem.getBoundingClientRect().height;
     this.height.emit(height);
   }
 
-  toggleUserPanel(){
-    this.openUserPanel = !this.openUserPanel;
-    this.openUserPanelChange.emit(this.openUserPanel);
-  }
   toggleSideNav(){
     this.openSideNav = !this.openSideNav;
     this.openSideNavChange.emit(this.openSideNav);
+  }
+  toggleShoppingCart(){
+    this.openShoppingCart = !this.openShoppingCart;
+    this.openShoppingCartChange.emit(this.openShoppingCart);
+  }
+  toggleUserPanel(){
+    this.openUserPanel = !this.openUserPanel;
+    this.openUserPanelChange.emit(this.openUserPanel);
   }
 }

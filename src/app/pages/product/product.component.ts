@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product, ProductsDataService } from 'src/app/services/products-data.service';
+import { ProductsDataService } from 'src/app/services/products-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductCartService } from 'src/app/services/product-cart.service';
+import { Product } from 'src/app/services/Product';
+
 
 @Component({
   selector: 'app-product',
@@ -17,7 +20,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductsDataService
+    private productService: ProductsDataService,
+    private productCartService: ProductCartService,
   ){}
 
   ngOnInit(): void {
@@ -28,5 +32,12 @@ export class ProductComponent implements OnInit {
         this.router.navigate(["page-not-found"]);
       }
     });
+  }
+
+  isCartEmpty(){
+    return this.productCartService.product_cart.length === 0;
+  }
+  getCartLength(){
+    return this.productCartService.product_cart.length;
   }
 }

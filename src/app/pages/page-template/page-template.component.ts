@@ -7,7 +7,8 @@ import {
   ViewChildren,
   ElementRef,
   ViewChild,
-  Directive
+  Directive,
+  Input
 } from '@angular/core';
 import { ResizeListenerService } from 'src/app/resize-listener/resize-listener.service';
 import { SideNavComponent } from 'src/app/components/side-nav/side-nav.component';
@@ -28,10 +29,50 @@ export class PageTemplateComponent implements OnInit  {
     }, 0);
   }
 
-  mobile: boolean = true;
-  openSideNav: boolean;
-  openUserPanel: boolean;
+  get shoppingCartTransformOrigin(){
+    return 'calc(100% - 16px - 20px - 40px) ' +
+        (this.topNavHeight / 2).toString() + 'px';
+  }
+  get userPanelTransformOrigin(){
+    return 'calc(100% - 16px - 20px) ' +
+        (this.topNavHeight / 2).toString() + 'px';
+  }
 
+
+  mobile: boolean = true;
+
+  private _openSideNav: boolean;
+  get openSideNav(){ return this._openSideNav; }
+  @Input() set openSideNav(value: boolean){
+    this._openSideNav = value;
+    if(this._openSideNav){
+      this._openUserPanel = false;
+      this._openShoppingCart = false;
+    }
+  }
+  
+  private _openShoppingCart: boolean;
+  get openShoppingCart(){ return this._openShoppingCart; }
+  @Input() set openShoppingCart(value: boolean){
+    this._openShoppingCart = value;
+    if(this._openShoppingCart){
+      this._openUserPanel = false;
+      this._openSideNav = false;
+    }
+  }
+  
+  private _openUserPanel: boolean;
+  get openUserPanel(){ return this._openUserPanel; }
+  @Input() set openUserPanel(value: boolean){
+    this._openUserPanel = value;
+    if(this.openUserPanel){
+      if(this.mobile){
+        this._openSideNav = false;
+      }
+      this._openShoppingCart = false;
+    }
+  }
+  
 
   topNavHeight: number;
 
@@ -50,7 +91,7 @@ export class PageTemplateComponent implements OnInit  {
           }
         }
         this.openSideNav = false;
-      } else{
+      } else if(this.sideNav){
         this.sideNav.classList.remove("mobile");
       }
       this.mobile = i == 0;

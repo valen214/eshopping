@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from 'src/app/services/products-data.service';
-
+import { Product } from 'src/app/services/Product';
 
 @Component({
   selector: 'customer-review',

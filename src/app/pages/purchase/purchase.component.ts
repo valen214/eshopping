@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Product, ProductsDataService } from 'src/app/services/products-data.service';
+import { ProductsDataService } from 'src/app/services/products-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import {
+  ProductCartService,
+  ProductCartItem
+} from 'src/app/services/product-cart.service';
+import { Product } from 'src/app/services/Product';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class QuantityErrorStateMatcher implements ErrorStateMatcher {
@@ -35,8 +40,29 @@ export class PurchaseComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductsDataService
+    private productService: ProductsDataService,
+    private productCartService: ProductCartService,
   ){}
+
+  get purchaseButtonText(){
+    if(this.quantityFormControl.invalid){
+      return "Invalid Quantity";
+    }
+    let quantity_and_price_string =
+      `Buy ${this.quantity} for ${this.currency} ` +
+      `${this.product.price * this.quantity}`;
+    let extra_message = "";
+    let cart = this.productCartService.product_cart.filter(
+      (p: ProductCartItem) => {
+        return p.product.id !== this.product.id
+      }
+    );
+    if(cart.length >= 1){
+      extra_message = " and check out " +
+        `${cart.length} other items in cart`
+    }
+    return quantity_and_price_string + extra_message
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -49,8 +75,20 @@ export class PurchaseComponent implements OnInit {
     });
   }
 
+  isCartEmpty(){
+    return this.productCartService.product_cart.length === 0;
+  }
+  getCartLength(){
+    return this.productCartService.product_cart.length;
+  }
+  addToCart(){
+    this.productCartService.add(this.product, this.quantity);
+  }
+
   buy(): void {
-    this.router.navigate(["..", "purchase-success"], { relativeTo: this.route });
+    this.router.navigate(
+        ["..", "purchase-success"],
+        { relativeTo: this.route });
   }
 
   log(...args){ console.log(...args); }

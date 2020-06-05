@@ -11,9 +11,20 @@
     E-Shopping
   </span>
 
-  <app-login-button
-      class="app-login-button"
-      (click)="this.toggleUserPanel()">
-  </app-login-button>
+  <div class="right-group">
+    <button class="shopping-cart-button"
+        mat-icon-button aria-label="menu button"
+        (click)="this.toggleShoppingCart()">
+      <mat-icon
+          [style.color]="openUserPanel ? 'rgba(0, 0, 0, 0.5)' : 'white'">
+        shopping_cart
+      </mat-icon>
+    </button>
+    <app-login-button
+        class="app-login-button"
+        (click)="this.toggleUserPanel()"
+        [color]="openShoppingCart ? 'rgba(0, 0, 0, 0.5)' : 'white'">
+    </app-login-button>
+  </div>
 </mat-toolbar>
 

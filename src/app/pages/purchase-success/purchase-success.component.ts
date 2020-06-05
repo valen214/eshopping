@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, ProductsDataService } from 'src/app/services/products-data.service';
+import { ProductsDataService } from 'src/app/services/products-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/services/Product';
+
 
 @Component({
   selector: 'app-purchase-success',

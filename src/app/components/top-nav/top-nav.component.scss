@@ -29,9 +29,13 @@
     cursor: pointer;
   }
 
-  .app-login-button {
-    z-index: 501;
+  .right-group {
     margin-left: auto;
+
+    .shopping-cart-button,
+    .app-login-button {
+      z-index: 501;
+    }
   }
 }
 
