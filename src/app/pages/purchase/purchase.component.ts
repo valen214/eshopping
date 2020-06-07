@@ -28,12 +28,7 @@ export class PurchaseComponent implements OnInit {
   product: Product;
 
   quantity: number = 1;
-  quantityFormControl = new FormControl(this.quantity, [
-    Validators.required,
-    Validators.min(1),
-    Validators.pattern(/^\d+$/),
-  ]);
-  quantityMatcher = new QuantityErrorStateMatcher();
+  invalidQuantity: boolean = false;
 
   currency: string = "HKD $ ";
 
@@ -45,7 +40,7 @@ export class PurchaseComponent implements OnInit {
   ){}
 
   get purchaseButtonText(){
-    if(this.quantityFormControl.invalid){
+    if(this.invalidQuantity){
       return "Invalid Quantity";
     }
     let quantity_and_price_string =
@@ -75,12 +70,6 @@ export class PurchaseComponent implements OnInit {
     });
   }
 
-  isCartEmpty(){
-    return this.productCartService.product_cart.length === 0;
-  }
-  getCartLength(){
-    return this.productCartService.product_cart.length;
-  }
   addToCart(){
     this.productCartService.add(this.product, this.quantity);
   }

@@ -17,6 +17,9 @@
 
 .quantity-input {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .mat-form-field-wrapper {
     cursor: text;

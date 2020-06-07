@@ -41,6 +41,7 @@ import { ResizeListenerModule } from './resize-listener/resize-listener.module';
 import { PageTemplateComponent } from './pages/page-template/page-template.component';
 import { CartComponent } from './components/user-panel/cart/cart.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { QuantityInputComponent } from './components/quantity-input/quantity-input.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     ClickAwayComponent,
     PageTemplateComponent,
     CartComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    QuantityInputComponent
   ],
   imports: [
     AppRoutingModule,

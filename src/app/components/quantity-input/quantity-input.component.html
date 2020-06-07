@@ -1,0 +1,32 @@
+<div class="quantity-input-container">
+  <div class="quantity-label"
+      [ngStyle]="labelStyle">
+    {{
+      quantityFormControl.invalid ? (
+        "Invalid Quantity"
+      ) : (
+        "Quantity (select or type)"
+      )
+    }}
+  </div>
+  <input class="quantity-input-field"
+      [value]="quantity"
+      (input)="onInput($event)"
+      [formControl]="quantityFormControl"
+      [style]="inputStyleString"/>
+  <button mat-icon-button
+      aria-label="select quantity"
+      class="quantity-select-button"
+      [matMenuTriggerFor]="quantitySelectMenu">
+    <mat-icon>expand_more</mat-icon>
+  </button>
+</div>
+
+<mat-menu #quantitySelectMenu="matMenu">
+  <button
+      *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]"
+      mat-menu-item
+      (click)="onSelectClick(i)">
+    {{ i }}
+  </button>
+</mat-menu>

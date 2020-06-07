@@ -1,6 +1,21 @@
 
+
 .shopping-cart-container {
   background: white;
+}
+
+.shopping-cart-title-container {
+  position: absolute;
+  right: 100px;
+  z-index: 501;
+  height: 56px;
+  transform: translateY(-100%);
+
+  .shopping-cart-title {
+    padding: 15px;
+    font-size: 1.5em;
+    font-weight: bolder;
+  }
 }
 
 
@@ -19,5 +34,21 @@
     height: 100%;
     margin-right: 20px;
   }
+  
+  .product-name {
+    padding: 15px;
+  }
 
+  .product-quantity {
+    padding: 15px;
+  }
+
+  .product-price {
+    padding: 15px;
+  }
+
+  .remove-button {
+    height: 45px;
+    width: 45px;
+  }
 }

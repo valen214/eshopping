@@ -1,10 +1,38 @@
 
+<!--
+
+<div class="shopping-cart-title-container">
+  <div class="shopping-cart-title">
+    Shopping Cart
+  </div>
+</div>
+
+-->
+
 <ng-container *ngFor="let product_info of
     this.productCartService.product_cart">
-
   <div *ngIf="product_info.product as p"
       class="product-tile">
-    <img [src]="p.thumbnail" />
-    <h2 style="margin:0">X</h2> {{ p.quantity }}
+    <div class="product-name">
+      {{ p.name }} 
+    </div>
+    <div class="product-quantity">
+      quantity: {{ product_info.quantity }}
+    </div>
+    <quantity-input
+        [size]="'0.5em'"
+        [quantity]="product_info.quantity"
+        (invalidQuantityChange)="onInvalidQuantityChange(p.id, $event)"
+        (quantityChange)="onQuantityChange(product_info, $event)"
+    ></quantity-input>
+    <div class="product-price">
+      {{ p.price }}
+    </div>
+    <button mat-icon-button
+        aria-label="remove item from cart"
+        class="remove-button"
+        (click)="deleteItem(p)">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 </ng-container>

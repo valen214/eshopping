@@ -1,6 +1,5 @@
 <page-template>
 
-
   <div *ngIf="product" class="page-content product-purchase-container">
 
     <h1>{{ product.name }}</h1>
@@ -9,36 +8,10 @@
         class="product-image" />
 
     <div class="quantity-input">
-      <mat-form-field>
-        <mat-label
-            style="margin-top: -1em;"
-            >Quantity (select or type)</mat-label>
-        <input
-            matInput
-            #quantityInput
-            [value]="quantity"
-            (input)="quantity = $event.target.value"
-            [formControl]="quantityFormControl"
-            style="height: 2em; line-height: 2em; font-size: 1em; margin-top: -1em;"/>
-        <button mat-button
-            *ngIf="quantity || true"
-            matSuffix mat-icon-button
-            aria-label="Clear"
-            [matMenuTriggerFor]="quantitySelectMenu">
-          <mat-icon>expand_more</mat-icon>
-        </button>
-
-        <mat-error *ngIf="quantityFormControl.invalid">
-          invalid <strong>quantity</strong>
-        </mat-error>
-      </mat-form-field>
-
-      <mat-menu #quantitySelectMenu="matMenu">
-        <button
-            *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]"
-            mat-menu-item
-            (click)="quantity = i; quantityFormControl.setValue(i)">{{ i }}</button>
-      </mat-menu>
+      <quantity-input
+          [(quantity)]="quantity"
+          (invalidQuantityChange)="invalidQuantity = $event">
+      </quantity-input>
 
       &nbsp;*&nbsp;{{ currency }}{{ product.price }} each
     </div>
@@ -46,11 +19,11 @@
     <div class="button-container">
       <button
           class="add-to-cart-button"
-          [disabled]="quantityFormControl.invalid"
+          [disabled]="invalidQuantity"
           mat-raised-button
           (click)="addToCart()">
         {{
-          quantityFormControl.invalid ? (
+          invalidQuantity ? (
             "Invalid Quantity"
           ) : (
             "Add " + quantity + " to Cart"
@@ -59,7 +32,7 @@
       </button>
       <button
           class="purchase-button"
-          [disabled]="quantityFormControl.invalid"
+          [disabled]="invalidQuantity"
           mat-raised-button
           color="primary"
           (click)="buy()">
