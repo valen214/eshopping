@@ -22,6 +22,9 @@ const routes: Routes = [{
     path: 'category/:category',
     component: HomeComponent,
   }, {
+    path: "purchase-success",
+    component: PurchaseSuccessComponent,
+  }, {
     path: 'setting',
     component: SettingComponent,
   }, {
@@ -33,7 +36,7 @@ const routes: Routes = [{
   }, {
     path: "product/:productId/purchase",
     component: PurchaseComponent,
-  },  {
+  }, {
     path: "product/:productId/purchase-success",
     component: PurchaseSuccessComponent,
   }, {

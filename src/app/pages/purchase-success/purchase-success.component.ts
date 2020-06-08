@@ -27,7 +27,7 @@ export class PurchaseSuccessComponent implements OnInit {
       this.product = this.productService.getProductById(this.productId);
 
       if(!this.product){
-        this.router.navigate(["page-not-found"]);
+        // this.router.navigate(["page-not-found"]);
       }
     });
   }
