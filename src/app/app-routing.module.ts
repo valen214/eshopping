@@ -6,6 +6,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProductComponent } from './pages/product/product.component';
 import { PurchaseComponent } from './pages/purchase/purchase.component';
 import { PurchaseSuccessComponent } from './pages/purchase-success/purchase-success.component';
+import { SettingComponent } from './pages/setting/setting.component';
+import { HelpComponent } from './pages/help/help.component';
 
 
 const routes: Routes = [{
@@ -19,6 +21,12 @@ const routes: Routes = [{
   }, {
     path: 'category/:category',
     component: HomeComponent,
+  }, {
+    path: 'setting',
+    component: SettingComponent,
+  }, {
+    path: 'help',
+    component: HelpComponent,
   }, {
     path: "product/:productId",
     component: ProductComponent,

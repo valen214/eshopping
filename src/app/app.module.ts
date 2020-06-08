@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
 import {
     MatFormFieldModule,
     MAT_FORM_FIELD_DEFAULT_OPTIONS
@@ -43,6 +44,8 @@ import { CartComponent } from './components/user-panel/cart/cart.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { QuantityInputComponent } from './components/quantity-input/quantity-input.component';
 import { TradeMarkComponent } from './components/trade-mark/trade-mark.component';
+import { HelpComponent } from './pages/help/help.component';
+import { SettingComponent } from './pages/setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,9 @@ import { TradeMarkComponent } from './components/trade-mark/trade-mark.component
     CartComponent,
     ShoppingCartComponent,
     QuantityInputComponent,
-    TradeMarkComponent
+    TradeMarkComponent,
+    HelpComponent,
+    SettingComponent
   ],
   imports: [
     AppRoutingModule,
@@ -80,6 +85,7 @@ import { TradeMarkComponent } from './components/trade-mark/trade-mark.component
     BrowserAnimationsModule,
 
     MatButtonModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
