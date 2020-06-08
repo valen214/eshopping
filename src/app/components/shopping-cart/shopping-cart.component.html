@@ -8,8 +8,9 @@
 </div>
 
 -->
-
-<ng-container *ngFor="let product_info of
+<ng-container
+    *ngIf="this.productCartService.product_cart.length; else noProduct">
+  <ng-container *ngFor="let product_info of
     this.productCartService.product_cart">
   <div *ngIf="product_info.product as p"
       class="product-tile">
@@ -32,11 +33,19 @@
       <mat-icon>close</mat-icon>
     </button>
   </div>
+  </ng-container>
+  <div class="checkout-button-container">
+    <button
+      mat-raised-button
+      color="primary"
+      aria-label="shopping cart checkout"
+      routerLink="/purchase-success">
+        Check Out
+    </button>
+  </div>
 </ng-container>
-
-<button mat-button
-  aria-label="shopping cart checkout"
-  class="checkout-button"
-  routerLink="/purchase-success">
-  Check Out
-</button>
+<ng-template #noProduct>
+  <div class="no-product-message">
+    No product in cart!
+  </div>
+</ng-template>

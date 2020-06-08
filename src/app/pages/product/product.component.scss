@@ -16,15 +16,39 @@
   .product-price {
     padding: 5px 0;
   }
-  .purchase-button {
-    margin-top: 10px;
+  
+  .quantity-input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .mat-form-field-wrapper {
+      cursor: text;
+    }
+
+    .mat-form-field-label-wrapper {
+      margin-top: -15px;
+    }
   }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 15px;
+  }
+
+
   .product-description {
     padding: 5px 0;
     margin-top: 10px;
     margin-bottom: 30px;
   }
-
 
 }
 

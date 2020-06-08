@@ -55,4 +55,8 @@ export class ProductCartService {
       }
     }
   }
+  
+  clear(){
+    this.product_cart.length = 0;
+  }
 }

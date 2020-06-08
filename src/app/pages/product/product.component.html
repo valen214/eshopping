@@ -8,13 +8,47 @@
   </app-slideshow>
   <div class="product-info">
     <h2 class="product-name">{{ product.name }}</h2>
-    <div class="product-price">{{ currency }}{{ product.price }}</div>
-    <button
-        class="purchase-button"
-        mat-raised-button color="primary"
-        [routerLink]="['purchase']">
-      Order Now!
-    </button>
+    <!--
+    <div class="product-price">
+      {{ currency }}{{ product.price }}
+    </div>
+    -->
+
+    <div class="quantity-input">
+      <quantity-input
+          [(quantity)]="quantity"
+          (invalidQuantityChange)="invalidQuantity = $event">
+      </quantity-input>
+
+      &nbsp;*&nbsp;{{ currency }}{{ product.price }} each
+    </div>
+    <div class="button-container">
+      <button
+          class="add-to-cart-button"
+          [disabled]="invalidQuantity"
+          mat-raised-button
+          color="primary"
+          (click)="addToCart()">
+        {{
+          invalidQuantity ? (
+            "Invalid Quantity"
+          ) : (
+            "Add " + quantity + " to Cart"
+          )
+        }}
+      </button>
+      <button
+          class="purchase-button"
+          [disabled]="invalidQuantity"
+          mat-raised-button
+          color="primary"
+          (click)="buy()">
+        {{
+          purchaseButtonText
+        }}
+      </button>
+    </div>
+
     <div class="product-description">{{ product.description }}</div>
     <customer-review [product]="product"></customer-review>
   </div>

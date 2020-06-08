@@ -1,8 +1,14 @@
 import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { QuantityErrorStateMatcher } from 'src/app/pages/purchase/purchase.component';
+import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
-
+/** Error when invalid control is dirty, touched, or submitted. */
+export class QuantityErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null,
+        form: FormGroupDirective | NgForm | null): boolean {
+    return !!(control && control.invalid);
+  }
+}
 @Component({
   selector: 'quantity-input',
   templateUrl: './quantity-input.component.html',

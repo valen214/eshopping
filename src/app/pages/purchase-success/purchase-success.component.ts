@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsDataService } from 'src/app/services/products-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/services/Product';
+import { ProductCartService } from 'src/app/services/product-cart.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class PurchaseSuccessComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductsDataService
+    private productService: ProductsDataService,
+    private productCartService: ProductCartService,
   ){}
 
   ngOnInit(): void {
@@ -30,5 +32,6 @@ export class PurchaseSuccessComponent implements OnInit {
         // this.router.navigate(["page-not-found"]);
       }
     });
+    this.productCartService.clear();
   }
 }
