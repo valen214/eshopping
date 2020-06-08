@@ -23,6 +23,7 @@ export class Product
     public thumbnail?: ImageBitmap | string,
     public images?: ImageBitmap[] | string[],
     public reviews?: Review[],
+    public tags?: string[],
   ){
     if(!this.id){
       this.id = randomstring(6);

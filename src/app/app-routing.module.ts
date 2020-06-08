@@ -18,7 +18,7 @@ const routes: Routes = [{
     component: LoginComponent,
   }, {
     path: 'category/:category',
-    redirectTo: '',
+    component: HomeComponent,
   }, {
     path: "product/:productId",
     component: ProductComponent,

@@ -1,6 +1,9 @@
 <page-template>
 
 
+  <h2 *ngIf="category" class="page-content category-title">
+    {{ category }}
+  </h2>
   <div class="page-content main-product-container">
     <ng-container *ngFor="let product of product_list">
       <app-product-card

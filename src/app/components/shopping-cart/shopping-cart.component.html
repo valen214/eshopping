@@ -16,9 +16,6 @@
     <div class="product-name">
       {{ p.name }} 
     </div>
-    <div class="product-quantity">
-      quantity: {{ product_info.quantity }}
-    </div>
     <quantity-input
         [size]="'0.5em'"
         [quantity]="product_info.quantity"
@@ -26,7 +23,7 @@
         (quantityChange)="onQuantityChange(product_info, $event)"
     ></quantity-input>
     <div class="product-price">
-      {{ p.price }}
+      HKD ${{ p.price }}
     </div>
     <button mat-icon-button
         aria-label="remove item from cart"

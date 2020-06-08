@@ -42,6 +42,7 @@ import { PageTemplateComponent } from './pages/page-template/page-template.compo
 import { CartComponent } from './components/user-panel/cart/cart.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { QuantityInputComponent } from './components/quantity-input/quantity-input.component';
+import { TradeMarkComponent } from './components/trade-mark/trade-mark.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { QuantityInputComponent } from './components/quantity-input/quantity-inp
     PageTemplateComponent,
     CartComponent,
     ShoppingCartComponent,
-    QuantityInputComponent
+    QuantityInputComponent,
+    TradeMarkComponent
   ],
   imports: [
     AppRoutingModule,
