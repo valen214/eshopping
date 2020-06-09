@@ -46,6 +46,8 @@ import { QuantityInputComponent } from './components/quantity-input/quantity-inp
 import { TradeMarkComponent } from './components/trade-mark/trade-mark.component';
 import { HelpComponent } from './pages/help/help.component';
 import { SettingComponent } from './pages/setting/setting.component';
+import { CheckOutComponent } from './pages/check-out/check-out.component';
+import { PayComponent } from './pages/pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { SettingComponent } from './pages/setting/setting.component';
     QuantityInputComponent,
     TradeMarkComponent,
     HelpComponent,
-    SettingComponent
+    SettingComponent,
+    CheckOutComponent,
+    PayComponent
   ],
   imports: [
     AppRoutingModule,

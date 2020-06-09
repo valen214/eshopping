@@ -41,7 +41,6 @@ export class ProductCartService {
         product, quantity
       });
     }
-    console.log("product_cart:", this.product_cart);
   }
 
   removeProduct(product: Product){

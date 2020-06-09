@@ -9,37 +9,37 @@
 
 -->
 <ng-container
-    *ngIf="this.productCartService.product_cart.length; else noProduct">
-  <ng-container *ngFor="let product_info of
-    this.productCartService.product_cart">
-  <div *ngIf="product_info.product as p"
-      class="product-tile">
-    <div class="product-name">
-      {{ p.name }} 
+    *ngIf="product_cart.length; else noProduct">
+  <ng-container *ngFor="let product_info of product_cart">
+    <div *ngIf="product_info.product as p"
+        class="product-tile">
+      <div class="product-name">
+        {{ p.name }} 
+      </div>
+      <quantity-input
+          [size]="'0.5em'"
+          [quantity]="product_info.quantity"
+          (invalidQuantityChange)="onInvalidQuantityChange(p.id, $event)"
+          (quantityChange)="onQuantityChange(product_info, $event)"
+      ></quantity-input>
+      <div class="product-price">
+        HKD ${{ p.price }}
+      </div>
+      <button mat-icon-button
+          aria-label="remove item from cart"
+          class="remove-button"
+          (click)="deleteItem(p)">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
-    <quantity-input
-        [size]="'0.5em'"
-        [quantity]="product_info.quantity"
-        (invalidQuantityChange)="onInvalidQuantityChange(p.id, $event)"
-        (quantityChange)="onQuantityChange(product_info, $event)"
-    ></quantity-input>
-    <div class="product-price">
-      HKD ${{ p.price }}
-    </div>
-    <button mat-icon-button
-        aria-label="remove item from cart"
-        class="remove-button"
-        (click)="deleteItem(p)">
-      <mat-icon>close</mat-icon>
-    </button>
-  </div>
-  </ng-container>
-  <div class="checkout-button-container">
+    </ng-container>
+  <div *ngIf="hideCheckoutButton === false"
+      class="checkout-button-container">
     <button
       mat-raised-button
       color="primary"
       aria-label="shopping cart checkout"
-      routerLink="/purchase-success">
+      routerLink="/check-out">
         Check Out
     </button>
   </div>

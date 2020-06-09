@@ -9,7 +9,7 @@ import { Product } from './Product';
 https://pixabay.com/photos/strawberries-red-fruit-sweet-ripe-5140640/
 https://pixabay.com/photos/raspberries-blueberry-fruit-food-5163812/
 */
-const PRODUCTS_DATA = [
+export const PRODUCTS_DATA = [
   new Product(
       "0", "Product 1", 1234, null,
       "https://cdn.pixabay.com/photo/2020/05/04/13/42/sardine-5129230_1280.jpg",

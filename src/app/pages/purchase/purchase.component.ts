@@ -9,7 +9,13 @@ import {
 } from 'src/app/services/product-cart.service';
 import { Product } from 'src/app/services/Product';
 
-
+/** Error when invalid control is dirty, touched, or submitted. */
+export class QuantityErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null,
+        form: FormGroupDirective | NgForm | null): boolean {
+    return !!(control && control.invalid);
+  }
+}
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
@@ -69,9 +75,7 @@ export class PurchaseComponent implements OnInit {
   }
 
   buy(): void {
-    this.router.navigate(
-        ["..", "purchase-success"],
-        { relativeTo: this.route });
+    this.router.navigate(["/checkout"]);
   }
 
   log(...args){ console.log(...args); }

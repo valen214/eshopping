@@ -10,7 +10,8 @@
     }}
   </div>
   <input class="quantity-input-field"
-      [value]="quantity"
+      #inputField
+      [value]="_quantity"
       (input)="onInput($event)"
       [formControl]="quantityFormControl"
       [style]="inputStyleString"/>

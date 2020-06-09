@@ -30,16 +30,12 @@
           color="primary"
           (click)="addToCart()">
         {{
-          invalidQuantity ? (
-            "Invalid Quantity"
-          ) : (
-            "Add " + quantity + " to Cart"
-          )
+          addToCartButtonText
         }}
       </button>
       <button
           class="purchase-button"
-          [disabled]="invalidQuantity"
+          [disabled]="invalidQuantity || product_cart.length === 0"
           mat-raised-button
           color="primary"
           (click)="buy()">

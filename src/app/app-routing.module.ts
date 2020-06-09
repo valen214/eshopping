@@ -8,6 +8,8 @@ import { PurchaseComponent } from './pages/purchase/purchase.component';
 import { PurchaseSuccessComponent } from './pages/purchase-success/purchase-success.component';
 import { SettingComponent } from './pages/setting/setting.component';
 import { HelpComponent } from './pages/help/help.component';
+import { CheckOutComponent } from './pages/check-out/check-out.component';
+import { PayComponent } from './pages/pay/pay.component';
 
 
 const routes: Routes = [{
@@ -21,6 +23,12 @@ const routes: Routes = [{
   }, {
     path: 'category/:category',
     component: HomeComponent,
+  }, {
+    path: "check-out",
+    component: CheckOutComponent,
+  }, {
+    path: "pay",
+    component: PayComponent,
   }, {
     path: "purchase-success",
     component: PurchaseSuccessComponent,

@@ -38,42 +38,57 @@ export class ProductComponent implements OnInit {
   }
 
   isCartEmpty(){
-    return this.productCartService.product_cart.length === 0;
+    return this.product_cart.length === 0;
   }
   getCartLength(){
-    return this.productCartService.product_cart.length;
+    return this.product_cart.length;
   }
 
 
   
-
+  get addToCartButtonText(){
+    if(this.invalidQuantity){
+      return "Invalid Quantity";
+    }
+    let text = "Add " + this.quantity + " to Cart";
+    for(let p_info of this.product_cart){
+      if(p_info.product.id === this.productId){
+        text += ` (${p_info.quantity} already in Cart)`;
+        break;
+      }
+    }
+    return text;
+  }
   get purchaseButtonText(){
     if(this.invalidQuantity){
       return "Invalid Quantity";
     }
-    let quantity_and_price_string =
-      `Buy ${this.quantity} for ${this.currency} ` +
-      `${this.product.price * this.quantity}`;
-    let extra_message = "";
-    let cart = this.productCartService.product_cart.filter(
-      (p: ProductCartItem) => {
-        return p.product.id !== this.product.id
-      }
-    );
-    if(cart.length >= 1){
-      extra_message = " and check out " +
-        `${cart.length} other items in cart`
+    let extra = ""
+    let len: number = this.product_cart.length;
+    switch(len){
+    case 0:
+      extra = "(No Product in Cart)"
+      break;
+    case 1:
+      extra = "(1 product in Cart)"
+      break;
+    default:
+      extra = `(${len} products in Cart)`
+      break;
     }
-    return quantity_and_price_string + extra_message
+    return "Check out " + extra;
   }
 
+  get product_cart(){
+    return this.productCartService.product_cart;
+  }
   
   addToCart(){
     this.productCartService.add(this.product, this.quantity);
   }
   buy(): void {
     this.router.navigate(
-        ["/product", this.productId, "purchase-success"],
+        ["/check-out"],
         { relativeTo: this.route });
   }
 }

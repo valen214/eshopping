@@ -25,7 +25,6 @@ export class PageTemplateComponent implements OnInit  {
   @ViewChild("sideNav") set s(elem: SideNavComponent){
     setTimeout(() => {
       this._sideNav = elem;
-      console.log(elem);
     }, 0);
   }
 

@@ -1,0 +1,41 @@
+
+
+.page-content {
+  padding: 15px;
+
+  .page-title {
+    margin-bottom: 15px;
+  }
+  
+  .total-cost {
+    padding: 15px;
+  }
+
+
+  .info-title {
+    margin-bottom: 15px;
+  }
+
+  .name-container {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    
+    .first-name {
+      margin-right: 10px;
+      flex-basis: 1fr;
+      flex-grow: 1;
+    }
+    .last-name {
+      flex-basis: 1fr;
+      flex-grow: 1;
+    }
+  }
+
+  .address {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+}
+
+

@@ -1,0 +1,42 @@
+
+
+<page-template>
+  <div class="page-content">
+    <h1 class="page-title">Check Out</h1>
+    <ng-container *ngIf="product_cart.length >= 1; else noProduct">
+
+      <shopping-cart hideCheckoutButton></shopping-cart>
+
+      <div class="total-cost">Total {{ total }}</div>
+
+      <h2 class="info-title">
+        Your Information
+      </h2>
+      <div class="name-container">
+        <mat-form-field class="first-name">
+          <mat-label>First name</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field class="last-name">
+          <mat-label>Last name</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="address">
+        <mat-label>Address</mat-label>
+        <textarea matInput placeholder="Input shipping address here">
+        </textarea>
+      </mat-form-field>
+      
+      <button
+          mat-raised-button
+          color="primary"
+          routerLink="/purchase-success">
+        Buy
+      </button>
+    </ng-container>
+    <ng-template #noProduct>
+      No Product in Shopping Cart!
+    </ng-template>
+  </div>
+</page-template>

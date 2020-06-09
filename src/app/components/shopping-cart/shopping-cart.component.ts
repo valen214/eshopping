@@ -14,6 +14,7 @@ export class ShoppingCartComponent implements OnInit {
 
   @Input() width = "100vw";
   @Input() height = "30vh";
+  @Input() hideCheckoutButton: boolean = false;
 
   isQuantityForProductInvalid = {}
 
@@ -28,7 +29,12 @@ export class ShoppingCartComponent implements OnInit {
     public productCartService: ProductCartService
   ){}
 
+  get product_cart(){
+    return this.productCartService.product_cart;
+  }
+
   ngOnInit(): void {
+    console.log('this.hideCheckoutButton:', this.hideCheckoutButton);
   }
 
   onInvalidQuantityChange(
@@ -37,10 +43,8 @@ export class ShoppingCartComponent implements OnInit {
     this.isQuantityForProductInvalid[product_id] = invalid;
   }
   onQuantityChange(product_info: ProductCartItem, quantity: string){
-    console.log("quantity change");
     if(!this.isQuantityForProductInvalid[product_info.product.id]){
       product_info.quantity = parseInt(quantity, 10);
-      console.log("quantity modified");
     }
   }
 
