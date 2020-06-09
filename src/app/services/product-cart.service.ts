@@ -11,7 +11,6 @@ export type ProductCartItem = {
   providedIn: 'root'
 })
 export class ProductCartService {
-
   public product_cart: ProductCartItem[] = []
 
   constructor(){}
@@ -40,6 +39,21 @@ export class ProductCartService {
       this.product_cart.push({
         product, quantity
       });
+    }
+  }
+  setQuantityForProduct(id: string, quantity: number){
+    for(let i = 0; i < this.product_cart.length; ++i){
+      let p = this.product_cart[i];
+      if(p.product.id === id){
+        this.product_cart[i].quantity = quantity;
+        /*
+        this.product_cart[i] = {
+          quantity,
+          product: p.product,
+        }
+        */
+        break;
+      }
     }
   }
 

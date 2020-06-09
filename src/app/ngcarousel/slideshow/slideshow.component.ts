@@ -17,10 +17,7 @@ export class SlideshowComponent implements OnInit {
     private elemRef: ElementRef,
   ){}
 
-  ngOnInit(): void {
-    console.log(this.style);
-    console.log(this.images);
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     if(this.images){

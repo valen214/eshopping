@@ -8,13 +8,12 @@
 </div>
 
 -->
-<ng-container
-    *ngIf="product_cart.length; else noProduct">
-  <ng-container *ngFor="let product_info of product_cart">
-    <div *ngIf="product_info.product as p"
-        class="product-tile">
+<ng-container *ngIf="product_cart.length; else noProduct">
+  <div class="product-tile"
+      *ngFor="let product_info of product_cart">
+    <ng-container *ngIf="product_info.product as p">
       <div class="product-name">
-        {{ p.name }} 
+        {{ p.name }}
       </div>
       <quantity-input
           [size]="'0.5em'"
@@ -31,8 +30,8 @@
           (click)="deleteItem(p)">
         <mat-icon>close</mat-icon>
       </button>
-    </div>
     </ng-container>
+  </div>
   <div *ngIf="hideCheckoutButton === false"
       class="checkout-button-container">
     <button

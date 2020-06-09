@@ -26,7 +26,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   constructor(
-    public productCartService: ProductCartService
+    public productCartService: ProductCartService,
   ){}
 
   get product_cart(){
@@ -44,7 +44,8 @@ export class ShoppingCartComponent implements OnInit {
   }
   onQuantityChange(product_info: ProductCartItem, quantity: string){
     if(!this.isQuantityForProductInvalid[product_info.product.id]){
-      product_info.quantity = parseInt(quantity, 10);
+      this.productCartService.setQuantityForProduct(
+          product_info.product.id, parseInt(quantity, 10));
     }
   }
 

@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.category = params['category'];
-      console.log("does run category on home");
       if(this.category){
         this.product_list = this.productDataService
         .getProductList().filter(p => {

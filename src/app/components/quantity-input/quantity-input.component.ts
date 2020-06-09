@@ -18,33 +18,17 @@ export class QuantityErrorStateMatcher implements ErrorStateMatcher {
 })
 export class QuantityInputComponent implements OnInit {
 
-  // @MARK FOR REMOVE
-  private _inputField: HTMLInputElement;
+  _inputField: HTMLInputElement;
   @ViewChild("inputField")
-  set inputField(v: ElementRef){
-    this._inputField = v.nativeElement;
-    if(this._quantity){
-      this._inputField.value = this._quantity.toString();
-    }
+  set inputField(ref: ElementRef){
+    this._inputField = ref.nativeElement;
+    this._inputField.value = this.quantity.toString();
   }
 
-  _quantity: number = 0;
-  @Input() set quantity(value: number){
-    this._quantity = value;
-
-    this.quantityFormControl.setValue(this._quantity);
-    this.quantityChange.emit(this.quantity);
-    if(this._inputField){
-      this._inputField.value = this.quantity.toString();
-    }
-  }
-  get quantity(): number {
-    return this._quantity;
-  }
-
+  @Input() quantity: number | string = 1;
   quantityFormControl = new FormControl(this.quantity, [
     Validators.required,
-    Validators.min(0),
+    Validators.min(1),
     Validators.pattern(/^\d+$/),
   ]);
   quantityMatcher = new QuantityErrorStateMatcher();
@@ -60,7 +44,7 @@ export class QuantityInputComponent implements OnInit {
   }
 
   get labelStyle(){
-    let quantity_empty = this.quantity === 0
+    let quantity_empty = this.quantity === ""
     let height = quantity_empty ? "100%" : "10px";
     return {
       color: this.quantityFormControl.invalid ? (
@@ -83,10 +67,13 @@ export class QuantityInputComponent implements OnInit {
   }
 
   onInput(event: InputEvent){
-    this.quantity = parseInt(
-        (event.target as HTMLInputElement).value, 10);
+    this.quantity = (event.target as HTMLInputElement).value
+    this.quantityFormControl.setValue(this.quantity);
+    this.quantityChange.emit(this.quantity);
   }
   onSelectClick(quantity: number){
     this.quantity = quantity;
+    this.quantityFormControl.setValue(this.quantity);
+    this.quantityChange.emit(this.quantity);
   }
 }

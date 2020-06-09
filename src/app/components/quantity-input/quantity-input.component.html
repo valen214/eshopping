@@ -11,7 +11,7 @@
   </div>
   <input class="quantity-input-field"
       #inputField
-      [value]="_quantity"
+      [value]="quantity"
       (input)="onInput($event)"
       [formControl]="quantityFormControl"
       [style]="inputStyleString"/>

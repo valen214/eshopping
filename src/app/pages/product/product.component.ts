@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ProductsDataService } from 'src/app/services/products-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductCartService, ProductCartItem } from 'src/app/services/product-cart.service';
@@ -35,8 +35,13 @@ export class ProductComponent implements OnInit {
         this.router.navigate(["page-not-found"]);
       }
     });
+    console.log("product cart ngOnInit()");
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+
+    console.log("product cart ngOnChanges()");
+  }
   isCartEmpty(){
     return this.product_cart.length === 0;
   }
