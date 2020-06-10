@@ -1,1 +1,23 @@
-<p>cms-home works!</p>
+
+<cms-template>
+  <div class="page-content">
+    <table
+        class="product-table"
+        mat-table [dataSource]="getProductList()">
+      <mat-text-column name="id"></mat-text-column>
+      <mat-text-column name="name"></mat-text-column>
+      <mat-text-column name="price"></mat-text-column>
+
+      <tr mat-header-row
+          *matHeaderRowDef="['id', 'name', 'price']; sticky: true"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: ['id', 'name', 'price']"></tr>
+    </table>
+    <button
+        mat-raised-button
+        color="primary"
+        aria-label="new product"
+        (click)="addNewProduct()">
+      Add New Product
+    </button>
+  </div>
+</cms-template>

@@ -15,20 +15,20 @@ function randomstring(length,
 
 export class Product
 {
-  constructor(
-    public id: string,
-    public name: string,
-    public price: number,
-    public description?: string,
-    public thumbnail?: ImageBitmap | string,
-    public images?: ImageBitmap[] | string[],
-    public reviews?: Review[],
-    public tags?: string[],
-  ){
+  public id: string
+  public name: string
+  public price: number
+  public description?: string
+  public thumbnail?: ImageBitmap | string
+  public images?: ImageBitmap[] | string[]
+  public reviews?: Review[]
+  public tags?: string[]
+  constructor(obj: Partial<Product>){
+    Object.assign(this, obj);
     if(!this.id){
       this.id = randomstring(6);
     }
-    Product.CACHED_PRODUCT[this.id] = this;
+    Product.cache(this);
   }
 
   static CACHED_PRODUCT = {

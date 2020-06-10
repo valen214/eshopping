@@ -32,6 +32,7 @@
     }
   }
   .side-nav {
+    max-width: 80vw;
     width: 350px;
     height: 100vh;
     position: fixed;
@@ -65,7 +66,6 @@
       transition: none;
     }
   }
-
 
   
   .shopping-cart,

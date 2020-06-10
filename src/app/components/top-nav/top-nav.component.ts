@@ -34,6 +34,13 @@ export class TopNavComponent implements OnInit {
   @Input() openUserPanel: boolean = false;
   @Output() openUserPanelChange = new EventEmitter();
 
+  @Input() hideRightGroup = false;
+
+  @Input() title = "E-Shopping";
+  @Input() titleRouterLink = "/";
+
+  private _height: number;
+
   constructor(
     private elemRef: ElementRef,
     private resizeListenerService: ResizeListenerService,
@@ -48,10 +55,16 @@ export class TopNavComponent implements OnInit {
     this.notifyHeight();
   }
 
+  ngDoCheck(){
+    this.notifyHeight();
+  }
+
   notifyHeight(){
-    let elem = this.elemRef.nativeElement;
-    let height = elem.getBoundingClientRect().height;
-    this.height.emit(height);
+    let height = this.elemRef.nativeElement.offsetHeight;
+    if(this._height !== height){
+      this.height.emit(height);
+      this._height = height;
+    }
   }
 
   toggleSideNav(){

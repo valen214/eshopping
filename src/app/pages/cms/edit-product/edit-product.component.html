@@ -1,0 +1,31 @@
+
+
+<cms-template>
+  <div class="page-content">
+    <div class="quantity-input-container">
+      <div class="quantity-label">
+        {{
+          idFormControl.invalid ? (
+            "Invalid ID"
+          ) : (
+            "Product ID"
+          )
+        }}
+      </div>
+      <input class="quantity-input-field"
+          #inputField
+          [value]="productId"
+          (input)="onInput($event)"
+          [formControl]="idFormControl" />
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      aria-label="Save Product Information"
+      (click)="save()"
+      routerLink="/cms">
+        Save Product Information
+    </button>
+  </div>
+</cms-template>

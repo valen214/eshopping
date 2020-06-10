@@ -30,18 +30,14 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.productId = params['productId'];
-      this.product = this.productService.getProductById(this.productId);
+      this.product = this.productService.getProductById(
+          this.productId);
       if(!this.product){
         this.router.navigate(["page-not-found"]);
       }
     });
-    console.log("product cart ngOnInit()");
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-
-    console.log("product cart ngOnChanges()");
-  }
   isCartEmpty(){
     return this.product_cart.length === 0;
   }
@@ -50,6 +46,11 @@ export class ProductComponent implements OnInit {
   }
 
 
+  get showCheckoutButton(): boolean {
+    return !!this.product_cart.find(p => {
+      return p.product.id === this.product.id
+    });
+  }
   
   get addToCartButtonText(){
     if(this.invalidQuantity){

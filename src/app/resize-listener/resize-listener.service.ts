@@ -48,7 +48,7 @@ export class ResizeListenerService {
 
     this.container.appendChild(this.elem);
     document.body.appendChild(this.container);
-    console.log(this.elem, breakpoints_ratios);
+    console.log("resize listener breakpoints", breakpoints_ratios);
 
     this.observer = new IntersectionObserver((entries, observer) => {
       let i: number = breakpoints_ratios.length;
@@ -68,9 +68,7 @@ export class ResizeListenerService {
       threshold: breakpoints_ratios
     });
     this.observer.observe(this.elem);
-
-    console.log("resize-listener constructor invoked");
-  }
+}
 
   private next(i: number){
     this.behaviourSubject.next(i);

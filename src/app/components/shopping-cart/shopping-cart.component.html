@@ -16,6 +16,7 @@
         {{ p.name }}
       </div>
       <quantity-input
+          class="product-quantity"
           [size]="'0.5em'"
           [quantity]="product_info.quantity"
           (invalidQuantityChange)="onInvalidQuantityChange(p.id, $event)"

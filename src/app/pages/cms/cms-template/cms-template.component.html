@@ -1,0 +1,15 @@
+
+<div class="page-container">
+  <top-nav
+    [(openSideNav)]="openSideNav"
+    (height)="topNavHeight = $event"
+    class="top-nav"
+    title="E-Shopping CMS"
+    titleRouterLink="/cms"
+    hideRightGroup>
+  </top-nav>
+  <div class="page-content-container">
+    <ng-content select=".page-content"></ng-content>
+  </div>
+</div>
+

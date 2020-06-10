@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsDataService } from 'src/app/services/products-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cms-home',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CmsHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private productDataService: ProductsDataService,
+    private router: Router,
+  ){}
 
-  ngOnInit(): void {
+  getProductList(){
+    return this.productDataService.getProductList();
   }
 
+  ngOnInit(): void {
+
+  }
+
+  addNewProduct(){
+    let id = this.productDataService.addProduct();
+    this.router.navigate(["/cms", "edit-product", id]);
+  }
 }

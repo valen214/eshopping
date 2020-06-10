@@ -6,12 +6,12 @@
   </button>
 
   <span
-      routerLink="/home"
+      [routerLink]="titleRouterLink"
       class="top-nav-label">
-    E-Shopping
+    {{ title }}
   </span>
 
-  <div class="right-group">
+  <div *ngIf="hideRightGroup === false" class="right-group">
     <button class="shopping-cart-button"
         mat-icon-button aria-label="menu button"
         (click)="this.toggleShoppingCart()">

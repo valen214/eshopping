@@ -2,6 +2,13 @@ import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation, View
 import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
+/**
+ * In template
+ * input.quantity-input-field has a binding
+ * [value]="quantity"
+ * which does not reflect the value on switching to other page
+ * so ViewChild is used for initialization
+ */
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class QuantityErrorStateMatcher implements ErrorStateMatcher {
@@ -14,7 +21,7 @@ export class QuantityErrorStateMatcher implements ErrorStateMatcher {
   selector: 'quantity-input',
   templateUrl: './quantity-input.component.html',
   styleUrls: ['./quantity-input.component.scss'],
-  // encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None,
 })
 export class QuantityInputComponent implements OnInit {
 

@@ -10,6 +10,8 @@ import { SettingComponent } from './pages/setting/setting.component';
 import { HelpComponent } from './pages/help/help.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { PayComponent } from './pages/pay/pay.component';
+import { CmsHomeComponent } from './pages/cms-home/cms-home.component';
+import { EditProductComponent } from './pages/cms/edit-product/edit-product.component';
 
 
 const routes: Routes = [{
@@ -47,6 +49,18 @@ const routes: Routes = [{
   }, {
     path: "product/:productId/purchase-success",
     component: PurchaseSuccessComponent,
+  }, {
+    path: "cms/home",
+    redirectTo: 'cms',
+    pathMatch: 'full',
+  }, {
+    path: 'cms',
+    pathMatch: 'full',
+    component: CmsHomeComponent,
+  }, {
+    path: 'cms/edit-product/:productId',
+    pathMatch: 'full',
+    component: EditProductComponent,
   }, {
     path: '',
     pathMatch: 'full',

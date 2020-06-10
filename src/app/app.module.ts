@@ -13,6 +13,7 @@ import {
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table'; 
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +49,8 @@ import { HelpComponent } from './pages/help/help.component';
 import { SettingComponent } from './pages/setting/setting.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
 import { PayComponent } from './pages/pay/pay.component';
+import { EditProductComponent } from './pages/cms/edit-product/edit-product.component';
+import { CmsTemplateComponent } from './pages/cms/cms-template/cms-template.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +80,9 @@ import { PayComponent } from './pages/pay/pay.component';
     HelpComponent,
     SettingComponent,
     CheckOutComponent,
-    PayComponent
+    PayComponent,
+    EditProductComponent,
+    CmsTemplateComponent
   ],
   imports: [
     AppRoutingModule,
@@ -95,6 +100,7 @@ import { PayComponent } from './pages/pay/pay.component';
     MatInputModule,
     MatMenuModule,
     MatSelectModule,
+    MatTableModule,
     MatToolbarModule,
 
     NGCarouselModule,

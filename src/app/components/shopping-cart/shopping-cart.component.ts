@@ -14,7 +14,9 @@ export class ShoppingCartComponent implements OnInit {
 
   @Input() width = "100vw";
   @Input() height = "30vh";
+  // unbind default is ""
   @Input() hideCheckoutButton: boolean = false;
+
 
   isQuantityForProductInvalid = {}
 
@@ -33,9 +35,7 @@ export class ShoppingCartComponent implements OnInit {
     return this.productCartService.product_cart;
   }
 
-  ngOnInit(): void {
-    console.log('this.hideCheckoutButton:', this.hideCheckoutButton);
-  }
+  ngOnInit(): void {}
 
   onInvalidQuantityChange(
       product_id: string,

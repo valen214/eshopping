@@ -30,7 +30,7 @@ export class PageTemplateComponent implements OnInit  {
 
   get shoppingCartTransformOrigin(){
     return 'calc(100% - 16px - 20px - 40px) ' +
-        (this.topNavHeight / 2).toString() + 'px';
+        (- this.topNavHeight / 2).toString() + 'px';
   }
   get userPanelTransformOrigin(){
     return 'calc(100% - 16px - 20px) ' +
