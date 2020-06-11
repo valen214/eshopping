@@ -21,13 +21,6 @@ import { SideNavComponent } from 'src/app/components/side-nav/side-nav.component
 export class PageTemplateComponent implements OnInit  {
   private sideNav: HTMLElement;
 
-  private _sideNav: SideNavComponent;
-  @ViewChild("sideNav") set s(elem: SideNavComponent){
-    setTimeout(() => {
-      this._sideNav = elem;
-    }, 0);
-  }
-
   get shoppingCartTransformOrigin(){
     return 'calc(100% - 16px - 20px - 40px) ' +
         (- this.topNavHeight / 2).toString() + 'px';

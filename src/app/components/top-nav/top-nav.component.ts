@@ -6,7 +6,8 @@ import {
   ContentChildren,
   Output,
   EventEmitter,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ViewChild
 } from '@angular/core';
 import {
   ResizeListenerService
@@ -56,12 +57,16 @@ export class TopNavComponent implements OnInit {
   }
 
   ngDoCheck(){
-    this.notifyHeight();
+    setTimeout(() => {
+      this.notifyHeight();
+    }, 0);
   }
 
   notifyHeight(){
-    let height = this.elemRef.nativeElement.offsetHeight;
-    if(this._height !== height){
+    let elem = this.elemRef.nativeElement;
+    let height = elem.offsetHeight || elem.clientHeight
+        || elem.getBoundingClientRect().height;
+    if(height && this._height !== height){
       this.height.emit(height);
       this._height = height;
     }

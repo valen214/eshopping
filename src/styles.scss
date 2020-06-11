@@ -25,3 +25,7 @@ $grid-breakpoints: (
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+*:focus {
+  outline: none;
+  border: 0;
+}

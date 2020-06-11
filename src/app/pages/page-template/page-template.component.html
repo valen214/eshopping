@@ -13,24 +13,26 @@
       [ngClass]="{ open: openSideNav && mobile }"
       (click)="mobile && (openSideNav = false)">
   </div>
-  <side-nav #sideNav class="side-nav"
+  <div class="side-nav"
       [ngClass]="{ open: openSideNav || !mobile }"
       [style.paddingTop]="topNavHeight + 'px'">
-      <!--
-        "topNav.elemRef.nativeElement.getBoundingClientRect().height + 'px'">
-      -->
-  </side-nav>
+    <!--
+      "topNav.elemRef.nativeElement.getBoundingClientRect().height + 'px'">
+    -->
+    <side-nav></side-nav>
+  </div>
 
   
   <div class="shopping-cart-click-away"
       [ngClass]="{ open: openShoppingCart }"
       (click)="(openShoppingCart = false)">
   </div>
-  <shopping-cart class="shopping-cart"
+  <div class="shopping-cart"
       [ngClass]="{ open: openShoppingCart }"
       [style.transformOrigin]="shoppingCartTransformOrigin"
       [style.top]="topNavHeight + 'px'">
-  </shopping-cart>
+    <shopping-cart></shopping-cart>
+  </div>
 
   <div class="user-panel-click-away"
       [ngClass]="{ open: openUserPanel }"
