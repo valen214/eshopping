@@ -62,6 +62,10 @@ const routes: Routes = [{
     pathMatch: 'full',
     component: EditProductComponent,
   }, {
+    path: 'cms/add-product',
+    pathMatch: 'full',
+    component: EditProductComponent,
+  }, {
     path: '',
     pathMatch: 'full',
     component: HomeComponent,

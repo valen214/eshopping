@@ -1,23 +1,34 @@
 
 
+<ng-template #textInputTemplate let-ctx>
+  <div [class]="ctx.name + '-container input-container'">
+    <div [class]="ctx.name + '-label input-label'">
+      {{
+        ctx.formControl.invalid ? (
+          ctx.label_invalid
+        ) : (
+          ctx.label_valid
+        )
+      }}
+    </div>
+    <input [class]="ctx.name + '-input-field'"
+        class="input-field"
+        [value]="ctx.value"
+        (input)="ctx?.onInput?.call(null, $event)"
+        [formControl]="ctx.formControl" />
+  </div>
+</ng-template>
+
 <cms-template>
   <div class="page-content">
-    <div class="quantity-input-container">
-      <div class="quantity-label">
-        {{
-          idFormControl.invalid ? (
-            "Invalid ID"
-          ) : (
-            "Product ID"
-          )
-        }}
-      </div>
-      <input class="quantity-input-field"
-          #inputField
-          [value]="productId"
-          (input)="onInput($event)"
-          [formControl]="idFormControl" />
-    </div>
+    <ng-container
+        [ngTemplateOutlet]="textInputTemplate"
+        [ngTemplateOutletContext]="id_template_context">
+    </ng-container>
+    <ng-container
+        [ngTemplateOutlet]="textInputTemplate"
+        [ngTemplateOutletContext]="name_template_context">
+    </ng-container>
 
     <button
       mat-raised-button

@@ -19,11 +19,14 @@ export class CmsHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+  }
 
+  editProduct(id: string){
+    this.router.navigate(["/cms", "edit-product", id]);
   }
 
   addNewProduct(){
-    let id = this.productDataService.addProduct();
-    this.router.navigate(["/cms", "edit-product", id]);
+    this.router.navigate(["/cms", "add-product"]);
   }
 }
