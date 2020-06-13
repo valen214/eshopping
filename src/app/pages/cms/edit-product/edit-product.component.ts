@@ -26,11 +26,11 @@ more-dynamic-components-with-ngtemplateoutlet-3nee
       value: this.productId
     }}
   }
-  productFormControl = new FormControl();
+  nameFormControl = new FormControl();
   get name_template_context(){
     return { $implicit: {
       name: 'name',
-      formControl: this.productFormControl,
+      formControl: this.nameFormControl,
       label_invalid: 'Invalid Product Name',
       label_valid: "Product Name",
       value: this.product?.name
@@ -41,14 +41,14 @@ more-dynamic-components-with-ngtemplateoutlet-3nee
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductsDataService,
+    private productDataService: ProductsDataService,
   ){}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.productId = params['productId'];
       if(this.productId){
-        this.product = this.productService.getProductById(
+        this.product = this.productDataService.getProductById(
             this.productId);
       }
 
@@ -57,6 +57,13 @@ more-dynamic-components-with-ngtemplateoutlet-3nee
 
   save(){
     this.router.navigate(["/cms"]);
+    if(this.product){
+
+    } else{
+      this.productDataService.addProduct({
+        name: this.nameFormControl.value,
+      });
+    }
   }
 
   onInput(event: InputEvent){

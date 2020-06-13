@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductCartService } from 'src/app/services/product-cart.service';
-import { PRODUCTS_DATA } from 'src/app/services/products-data.service';
 
 @Component({
   selector: 'check-out',
